@@ -18,4 +18,5 @@ Working through [LearnOpenGL](https://learnopengl.com/). This repo tracks my pro
 Libraries are included in the `lib/` directory
 
 ## Screenshots
-Will add later!
+Made some cool triangles after getting inspired by comments in the Shaders chapter:
+![](assets\images\mybeautifultriangles.gif "A gif of triangles oscillating one by one between white and black")

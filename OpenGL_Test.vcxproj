@@ -157,6 +157,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Content Include="assets\images\mybeautifultriangles.gif" />
+    <Content Include="README.md" />
     <Content Include="shaders\vertex.vs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +175,6 @@
     <ClInclude Include="lib\glad\include\khrplatform.h" />
     <ClInclude Include="lib\GLFW\include\glfw3.h" />
     <ClInclude Include="lib\GLFW\include\glfw3native.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
