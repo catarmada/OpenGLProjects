@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>P:\OpenGL\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>P:\OpenGL\lib\lib-vc2022;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
+    <IncludePath>$(ProjectDir)include;$(ProjectDir)lib\GLAD\include;$(ProjectDir)lib\GLFW\include;$(VC_IncludePath);$(WindowsSDK_IncludePath) </IncludePath>
+    <LibraryPath>$(ProjectDir)lib\GLFW\lib-vc2022;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -157,18 +157,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="glad.c" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="ShaderClass.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ShaderClass.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="shaders\vertex.vs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="shaders\fragment.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ShaderClass.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ShaderClass.h" />
+    <ClInclude Include="lib\glad\include\glad.h" />
+    <ClInclude Include="lib\glad\include\khrplatform.h" />
+    <ClInclude Include="lib\GLFW\include\glfw3.h" />
+    <ClInclude Include="lib\GLFW\include\glfw3native.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

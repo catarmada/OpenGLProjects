@@ -19,6 +19,7 @@ Release/
 *.suo
 .vs/
 .vscode/
+.code-workspace
 
 # IDE folders
 .idea/
