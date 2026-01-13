@@ -3,3 +3,22 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# Build outputs
+x64/
+Debug/
+Release/
+*.exe
+*.pdb
+*.obj
+*.ilk
+*.log
+
+# User-specific files
+*.vcxproj.user
+*.suo
+.vs/
+.vscode/
+
+# IDE folders
+.idea/

@@ -45,7 +45,7 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    ShaderClass shader("P:/RiderProjects/OpenGL_Test/shaders/vertex.vs", "P:/RiderProjects/OpenGL_Test/shaders/fragment.fs"); // you can name your shader files however you like
+    ShaderClass shader("shaders/vertex.vs", "shaders/fragment.fs");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
