@@ -7,8 +7,9 @@ Working through [LearnOpenGL](https://learnopengl.com/). This repo tracks my pro
 
 ## Dependencies
 - GLFW 3.x
-- GLAD (OpenGL loader)
-- Visual Studio 2022 or Rider
+- GLAD
+- CMake
+- MSVC 2022
 
 ## Build Instructions
 1. Clone the repo
