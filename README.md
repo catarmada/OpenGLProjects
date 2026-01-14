@@ -13,8 +13,7 @@ Working through [LearnOpenGL](https://learnopengl.com/). This repo tracks my pro
 
 ## Build Instructions
 1. Clone the repo
-2. Open `OpenGL_Test.sln` in Visual Studio/Rider
-3. Build and run (F5)
+2. Build and run
 
 Libraries are included in the `lib/` directory
 
