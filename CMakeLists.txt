@@ -9,6 +9,7 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/lib/glad/include
         ${PROJECT_SOURCE_DIR}/lib/GLFW/include
         ${PROJECT_SOURCE_DIR}/lib/KHR
+        ${PROJECT_SOURCE_DIR}/lib/stb
 )
 
 # Link directories
@@ -25,6 +26,7 @@ set(SOURCES
         src/main.cpp
         src/glad.c
         src/ShaderClass.cpp
+        src/stbdef.cpp
 )
 
 # Create executable

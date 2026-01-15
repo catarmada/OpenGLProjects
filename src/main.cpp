@@ -1,6 +1,7 @@
 #include <glad.h>
 #include <glfw3.h>
 #include "ShaderClass.h"
+#include "stb_image.h"
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -45,64 +46,27 @@ int main()
 
     // build and compile our shader program
     // ------------------------------------
-    ShaderClass shader("shaders/vertex.vs", "shaders/fragment.fs");
+    ShaderClass shader("shaders/vertex.vert", "shaders/fragment.frag");
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-    float vertices[] = {
+    constexpr float vertices[] = {
         // positions         // colors
-         0.8f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,  // bottom right
-         0.6f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,  // bottom left
-         0.7f,  -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,   // top 
-        0.68f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.58f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.4f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.56f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.38f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.38f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.82f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        .72f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        .82f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.36f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.36f, 0.02f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.2f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.36f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.36f, -0.02f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.2f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.36f, 0.0f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.18f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.18f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.16f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.16f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.02f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.14f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        0.0f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.14f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.02f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.16f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.16f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.18f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.18f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.36f, 0.0f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.2f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.36f, -0.02f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.36f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.2f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.36f, 0.02f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.36f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.82f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.72f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.82f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.38f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.38f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.56f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.4f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.58f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.68f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.7f, -0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.6f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f,
-        -0.8f, 0.2f, 0.0f,  1.0f, 1.0f, 1.0f
+        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+       -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
     };
+
+    float texcoords[] = {
+        0.0f, 0.0f,
+        1.0f, 0.0f,
+        0.5f, 1.0f
+    };
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 
     unsigned int VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -144,7 +108,7 @@ int main()
         int timeLoc = glGetUniformLocation(shader.ID, "time");
         glUniform1f(timeLoc, time);
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 51);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
